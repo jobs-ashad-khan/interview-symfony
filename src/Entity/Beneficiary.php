@@ -16,7 +16,7 @@ class Beneficiary
     private ?int $id = null;
 
     #[ORM\Column(type: "string", length: 255)]
-    private $name;
+    private ?string $name;
 
     public function getId(): ?int
     {
@@ -33,5 +33,10 @@ class Beneficiary
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getAvatarUrl(): string
+    {
+        return 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . urlencode($this->name);
     }
 }
