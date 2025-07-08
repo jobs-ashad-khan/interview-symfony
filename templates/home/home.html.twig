@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>List of beneficiaries</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code>/home/khan/Projets/Tests techniques/test-reconnect/interview-symfony/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/home/khan/Projets/Tests techniques/test-reconnect/interview-symfony/templates/home/index.html.twig</code></li>
+        {% for beneficiary in beneficiaries %}
+            <li>{{ beneficiary.name }}</li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
