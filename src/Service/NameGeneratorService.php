@@ -21,16 +21,16 @@ class NameGeneratorService
 
     public function getName(): string
     {
-        return $this->faker->name;
+        return $this->faker->name();
     }
 
     public function getFirstName(): string
     {
-        return $this->faker->firstName;
+        return $this->faker->firstName();
     }
 
     public function getLastName(): string
     {
-        return $this->faker->lastName;
+        return $this->faker->lastName();
     }
 }
