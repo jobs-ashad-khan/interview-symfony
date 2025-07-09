@@ -32,12 +32,20 @@
 <script>
     const searchInput = document.getElementById('searchInput');
 
+    // Fonction pour supprimer accents et mettre en minuscule
+    function normalize(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
     searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase();
+        const query = normalize(this.value);
         const cards = document.querySelectorAll('.beneficiary-card');
 
         cards.forEach(card => {
-            const name = card.querySelector('.beneficiary-name')?.textContent.toLowerCase();
+            const nameEl = card.querySelector('.beneficiary-name');
+            if (!nameEl) return;
+
+            const name = normalize(nameEl.textContent);
             const match = name.includes(query);
             card.style.display = (!query || match) ? 'block' : 'none';
         });
