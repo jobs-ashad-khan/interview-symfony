@@ -19,6 +19,14 @@ class BeneficiaryRepository extends ServiceEntityRepository
         parent::__construct($registry, Beneficiary::class);
     }
 
+    public function save(Beneficiary $beneficiary): Beneficiary
+    {
+        $this->getEntityManager()->persist($beneficiary);
+        $this->getEntityManager()->flush();
+        return $beneficiary;
+    }
+
+
     // /**
     //  * @return Beneficiary[] Returns an array of Beneficiary objects
     //  */

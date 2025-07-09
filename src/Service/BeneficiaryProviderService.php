@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\DTO\BeneficiaryDTO;
 use App\Entity\Beneficiary;
 use App\Repository\BeneficiaryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -9,7 +10,6 @@ use Doctrine\ORM\EntityManagerInterface;
 readonly class BeneficiaryProviderService
 {
     public function __construct(
-        private EntityManagerInterface $entityManager,
         private BeneficiaryRepository $beneficiaryRepository,
     ){
     }
@@ -19,11 +19,10 @@ readonly class BeneficiaryProviderService
         return $this->beneficiaryRepository->findAll();
     }
 
-    public function createBeneficiary(Beneficiary $beneficiary): Beneficiary
+    public function createBeneficiary(BeneficiaryDTO $beneficiaryDTO): Beneficiary
     {
-        $this->entityManager->persist($beneficiary);
-        $this->entityManager->flush();
+        $beneficiary = $beneficiaryDTO->toEntity();
 
-        return $beneficiary;
+        return $this->beneficiaryRepository->save($beneficiary);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\DTO\BeneficiaryDTO;
 use App\Entity\Beneficiary;
 
 readonly class BeneficiaryGeneratorService
@@ -15,9 +16,10 @@ readonly class BeneficiaryGeneratorService
     {
         $beneficiaries = [];
         for ($i = 0; $i < $limit; $i++) {
-            $beneficiary = new Beneficiary();
-            $beneficiary->setName($this->nameGeneratorService->getFirstName());
-            $beneficiaries[] = $beneficiary;
+            $beneficiaryDTO = new BeneficiaryDTO();
+            $beneficiaryDTO->name = $this->nameGeneratorService->getFirstName();
+            $beneficiaryDTO->avatarUrl = 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . urlencode($beneficiaryDTO->name);
+            $beneficiaries[] = $beneficiaryDTO;
         }
 
         return $beneficiaries;

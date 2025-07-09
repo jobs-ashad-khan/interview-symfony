@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\DTO\BeneficiaryDTO;
 use App\Repository\BeneficiaryRepository;
 use App\Service\BeneficiaryGeneratorService;
 use App\Service\BeneficiaryProviderService;
@@ -21,7 +22,7 @@ final class DashboardController extends AbstractController
     public function dashboard(): Response
     {
         $randomBeneficiaries = $this->beneficiaryGeneratorService->getRandomBeneficiaries(12);
-        $persistedBeneficiaries = $this->beneficiaryProviderService->getAll();
+        $persistedBeneficiaries = BeneficiaryDTO::fromEntityCollection($this->beneficiaryProviderService->getAll());
 
         return $this->render('dashboard/dashboard.html.twig', [
             'randomBeneficiaries' => $randomBeneficiaries,
