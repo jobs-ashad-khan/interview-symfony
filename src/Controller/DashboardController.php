@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\BeneficiaryRepository;
 use App\Service\BeneficiaryGeneratorService;
+use App\Service\BeneficiaryProviderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,7 +12,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class DashboardController extends AbstractController
 {
     public function __construct(
-        private readonly BeneficiaryGeneratorService $beneficiaryGeneratorService
+        private readonly BeneficiaryGeneratorService $beneficiaryGeneratorService,
+        private readonly BeneficiaryProviderService $beneficiaryProviderService,
     ) {
     }
 
@@ -18,10 +21,12 @@ final class DashboardController extends AbstractController
     public function dashboard(): Response
     {
         $randomBeneficiaries = $this->beneficiaryGeneratorService->getRandomBeneficiaries(12);
+        $persistedBeneficiaries = $this->beneficiaryProviderService->getAll();
 
         return $this->render('dashboard/dashboard.html.twig', [
             'controller_name' => 'DashboardController',
             'randomBeneficiaries' => $randomBeneficiaries,
+            'persistedBeneficiaries' => $persistedBeneficiaries,
         ]);
     }
 }

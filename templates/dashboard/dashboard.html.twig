@@ -32,6 +32,33 @@
                 {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: randomBeneficiaries } %}
             </div>
         </div>
+
+        <hr>
+
+        <div class="beneficiaries-block">
+            <h3>Personnes non stockées</h3>
+
+            <div>
+                <form action="{{ path('app_beneficiary_generate') }}">
+                    <button type="submit">Générer un bénéficiaire</button>
+                </form>
+            </div>
+
+            <div class="beneficiary-search-block">
+                <div>
+                    <label class="search-bar">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10,2A8,8 0 1,0 18,10A8,8 0 0,0 10,2M10,4A6,6 0 1,1 4,10A6,6 0 0,1 10,4M22,22L16.65,16.65" />
+                        </svg>
+                        <input type="text" id="beneficiarySearchInput" placeholder="Rechercher un bénéficiaire...">
+                    </label>
+                </div>
+            </div>
+
+            <div class="beneficiary-list-block">
+                {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: persistedBeneficiaries } %}
+            </div>
+        </div>
     </div>
 </div>
 

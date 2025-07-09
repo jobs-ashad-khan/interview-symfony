@@ -16,7 +16,7 @@ readonly class BeneficiaryGeneratorService
         $beneficiaries = [];
         for ($i = 0; $i < $limit; $i++) {
             $beneficiary = new Beneficiary();
-            $beneficiary->setName($this->nameGeneratorService->getFirstName());
+            $beneficiary->setName($this->nameGeneratorService->getName());
             $beneficiaries[] = $beneficiary;
         }
 
