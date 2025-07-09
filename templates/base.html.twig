@@ -15,13 +15,22 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        {% block header %}
+            <header class="main-header">
+                <div class="header-left">
+                    <a href="{{ path('app_dashboard') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="Reconnect Groupe SOS" class="logo">
+                    </a>
                 </div>
-            {% endif %}
-        </header>
+                {% if app.user %}
+                    <div class="header-right">
+                        <span class="user-name">Logged in with <strong>{{ app.user.userIdentifier }}</strong></span>
+                        <a href="{{ path('app_logout') }}" class="logout-btn">Déconnexion</a>
+                    </div>
+                {% endif %}
+            </header>
+        {% endblock %}
+
         {% block body %}{% endblock %}
     </body>
 </html>

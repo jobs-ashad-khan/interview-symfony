@@ -3,8 +3,9 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/css/beneficiary.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/searchbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/css/beneficiary.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -12,7 +13,7 @@
 <div class="container">
     <h1>List of non persisted beneficiaries</h1>
 
-    <div class="beneficiary-search">
+    <div class="beneficiary-search-block">
         <div>
             <label class="search-bar">
                 <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -23,6 +24,11 @@
         </div>
     </div>
 
-    {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: beneficiaries } %}
+    <div class="beneficiary-list-block">
+        {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: beneficiaries } %}
+    </div>
 </div>
+
+<script src="{{ asset('style/js/beneficiary-search.js') }}"></script>
+
 {% endblock %}
