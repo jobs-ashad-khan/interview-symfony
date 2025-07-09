@@ -4,29 +4,44 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .container { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .beneficiary-search { margin: 20px 0; }
 </style>
 
-<div class="example-wrapper">
+<div class="container">
     <h1>List of non persisted beneficiaries</h1>
 
-    <div>
-        <form action="{{ path('app_dashboard') }}" method="get">
+    <div class="beneficiary-search">
+        <form id="search-form" action="{{ path('app_dashboard') }}" method="get">
             <label>
-                <input type="text" name="q" placeholder="Rechercher un bénéficiaire...">
+                <input type="text" name="q" placeholder="Rechercher un bénéficiaire..." />
             </label>
             <button type="submit">Rechercher</button>
         </form>
     </div>
 
-    <ul>
+    <div class="beneficiary-list">
         {% for beneficiary in beneficiaries %}
-            <li>
-                <img src="{{ beneficiary.avatarUrl }}" alt="Avatar de {{ beneficiary.name }}" width="64" height="64"/>
-                <span>{{ beneficiary.name }}</span>
-            </li>
+            <div class="beneficiary-card">
+                <img class="beneficiary-avatar" src="{{ beneficiary.avatarUrl }}" alt="Avatar de {{ beneficiary.name }}" width="64" height="64"/>
+                <span class="beneficiary-name">{{ beneficiary.name }}</span>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const query = this.querySelector('input[name="q"]').value.toLowerCase();
+
+        const cards = document.querySelectorAll('.beneficiary-card');
+        cards.forEach(card => {
+            const name = card.querySelector('.beneficiary-name')?.textContent.toLowerCase();
+            const match = name.includes(query);
+            card.style.display = match ? 'block' : 'none';
+        });
+    });
+</script>
+
 {% endblock %}
