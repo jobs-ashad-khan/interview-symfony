@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Utils;
+namespace App\Service;
 
 use Faker\Factory;
 use Faker\Generator;
 
-class RandomNameGenerator
+class NameGeneratorService
 {
     private Generator $faker;
 
@@ -14,17 +14,22 @@ class RandomNameGenerator
         $this->faker = Factory::create($locale);
     }
 
-    public function getRandomName(): string
+    public function setLocale(string $locale = 'fr_FR'): void
+    {
+        $this->faker = Factory::create($locale);
+    }
+
+    public function getName(): string
     {
         return $this->faker->name;
     }
 
-    public function getRandomFirstName(): string
+    public function getFirstName(): string
     {
         return $this->faker->firstName;
     }
 
-    public function getRandomLastName(): string
+    public function getLastName(): string
     {
         return $this->faker->lastName;
     }

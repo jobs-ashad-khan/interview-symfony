@@ -3,18 +3,20 @@
 namespace App\Service;
 
 use App\Entity\Beneficiary;
-use App\Utils\RandomNameGenerator;
 
-class BeneficiaryService
+readonly class BeneficiaryGeneratorService
 {
+    public function __construct(
+        private NameGeneratorService $nameGeneratorService,
+    ) {
+    }
+
     public function getRandomBeneficiaries(int $limit = 10): array
     {
-        $nameGenerator = new RandomNameGenerator();
-
         $beneficiaries = [];
         for ($i = 0; $i < $limit; $i++) {
             $beneficiary = new Beneficiary();
-            $beneficiary->setName($nameGenerator->getRandomName());
+            $beneficiary->setName($this->nameGeneratorService->getFirstName());
             $beneficiaries[] = $beneficiary;
         }
 
