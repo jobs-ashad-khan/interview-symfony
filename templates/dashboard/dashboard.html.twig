@@ -12,12 +12,11 @@
     <h1>List of non persisted beneficiaries</h1>
 
     <div class="beneficiary-search">
-        <form id="search-form" action="{{ path('app_dashboard') }}" method="get">
+        <div>
             <label>
-                <input type="text" name="q" placeholder="Rechercher un bénéficiaire..." />
+                <input type="text" id="searchInput" placeholder="Rechercher un bénéficiaire...">
             </label>
-            <button type="submit">Rechercher</button>
-        </form>
+        </div>
     </div>
 
     <div class="beneficiary-list">
@@ -31,15 +30,16 @@
 </div>
 
 <script>
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const query = this.querySelector('input[name="q"]').value.toLowerCase();
+    const searchInput = document.getElementById('searchInput');
 
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
         const cards = document.querySelectorAll('.beneficiary-card');
+
         cards.forEach(card => {
             const name = card.querySelector('.beneficiary-name')?.textContent.toLowerCase();
             const match = name.includes(query);
-            card.style.display = match ? 'block' : 'none';
+            card.style.display = (!query || match) ? 'block' : 'none';
         });
     });
 </script>
