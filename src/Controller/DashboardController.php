@@ -24,7 +24,6 @@ final class DashboardController extends AbstractController
         $persistedBeneficiaries = $this->beneficiaryProviderService->getAll();
 
         return $this->render('dashboard/dashboard.html.twig', [
-            'controller_name' => 'DashboardController',
             'randomBeneficiaries' => $randomBeneficiaries,
             'persistedBeneficiaries' => $persistedBeneficiaries,
         ]);

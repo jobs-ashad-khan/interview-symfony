@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\BeneficiaryRepository;
 use App\Service\BeneficiaryGeneratorService;
 use App\Service\BeneficiaryProviderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,8 +22,6 @@ final class BeneficiaryController extends AbstractController
         $beneficiary = $this->beneficiaryGeneratorService->getRandomBeneficiaries(1)[0];
         $beneficiary = $this->beneficiaryProviderService->createBeneficiary($beneficiary);
 
-        return $this->redirectToRoute('app_dashboard', [
-            'persistedBeneficiaries' => [$beneficiary],
-        ]);
+        return $this->redirectToRoute('app_dashboard');
     }
 }
