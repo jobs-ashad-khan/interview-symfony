@@ -24,7 +24,7 @@
                 </div>
                 {% if app.user %}
                     <div class="header-right">
-                        <span class="user-name">Logged in with <strong>{{ app.user.userIdentifier }}</strong></span>
+                        <span class="user-name">Connecté en tant que <strong>{{ app.user.userIdentifier }}</strong></span>
                         <a href="{{ path('app_logout') }}" class="logout-btn">Déconnexion</a>
                     </div>
                 {% endif %}

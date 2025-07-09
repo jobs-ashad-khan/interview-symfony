@@ -17,11 +17,11 @@ final class DashboardController extends AbstractController
     #[Route('/', name: 'app_dashboard')]
     public function dashboard(): Response
     {
-        $beneficiaries = $this->beneficiaryGeneratorService->getRandomBeneficiaries(12);
+        $randomBeneficiaries = $this->beneficiaryGeneratorService->getRandomBeneficiaries(12);
 
         return $this->render('dashboard/dashboard.html.twig', [
             'controller_name' => 'DashboardController',
-            'beneficiaries' => $beneficiaries,
+            'randomBeneficiaries' => $randomBeneficiaries,
         ]);
     }
 }

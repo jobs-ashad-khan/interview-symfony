@@ -11,21 +11,27 @@
 {% block body %}
 
 <div class="container">
-    <h1>List of non persisted beneficiaries</h1>
+    <div class="beneficiaries-section">
+        <h1 class="beneficiary-section-title">Bienvenue dans le gestionnaire de bénéficiaires Reconnect</h1>
 
-    <div class="beneficiary-search-block">
-        <div>
-            <label class="search-bar">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M10,2A8,8 0 1,0 18,10A8,8 0 0,0 10,2M10,4A6,6 0 1,1 4,10A6,6 0 0,1 10,4M22,22L16.65,16.65" />
-                </svg>
-                <input type="text" id="beneficiarySearchInput" placeholder="Rechercher un bénéficiaire...">
-            </label>
+        <div class="beneficiaries-block">
+            <h3>Personnes stockées</h3>
+
+            <div class="beneficiary-search-block">
+                <div>
+                    <label class="search-bar">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10,2A8,8 0 1,0 18,10A8,8 0 0,0 10,2M10,4A6,6 0 1,1 4,10A6,6 0 0,1 10,4M22,22L16.65,16.65" />
+                        </svg>
+                        <input type="text" id="beneficiarySearchInput" placeholder="Rechercher un bénéficiaire...">
+                    </label>
+                </div>
+            </div>
+
+            <div class="beneficiary-list-block">
+                {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: randomBeneficiaries } %}
+            </div>
         </div>
-    </div>
-
-    <div class="beneficiary-list-block">
-        {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: beneficiaries } %}
     </div>
 </div>
 
