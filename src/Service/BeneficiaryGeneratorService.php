@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\DTO\BeneficiaryDTO;
 use App\Entity\Beneficiary;
+use App\Utils\DiceBearAvatarGenerator;
 
 readonly class BeneficiaryGeneratorService
 {
@@ -18,7 +19,7 @@ readonly class BeneficiaryGeneratorService
         for ($i = 0; $i < $limit; $i++) {
             $beneficiaryDTO = new BeneficiaryDTO();
             $beneficiaryDTO->name = $this->nameGeneratorService->getFirstName();
-            $beneficiaryDTO->avatarUrl = 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . urlencode($beneficiaryDTO->name);
+            $beneficiaryDTO->avatarUrl = DiceBearAvatarGenerator::getAvatar($beneficiaryDTO->name);
             $beneficiaries[] = $beneficiaryDTO;
         }
 

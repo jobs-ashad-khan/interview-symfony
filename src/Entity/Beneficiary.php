@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BeneficiaryRepository;
+use App\Utils\DiceBearAvatarGenerator;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ApiResource]
@@ -37,6 +38,6 @@ class Beneficiary
 
     public function getAvatarUrl(): string
     {
-        return 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . urlencode($this->name);
+        return DiceBearAvatarGenerator::getAvatar($this->name);
     }
 }
