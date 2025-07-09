@@ -9,7 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>List of beneficiaries</h1>
+    <h1>List of non persisted beneficiaries</h1>
+
+    <div>
+        <form action="{{ path('app_dashboard') }}" method="get">
+            <label>
+                <input type="text" name="q" placeholder="Rechercher un bénéficiaire...">
+            </label>
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
 
     <ul>
         {% for beneficiary in beneficiaries %}
