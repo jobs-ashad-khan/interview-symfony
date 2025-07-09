@@ -1,0 +1,16 @@
+.beneficiary-search {
+    margin: 20px 0;
+}
+
+.beneficiary-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.beneficiary-card {
+    width: calc(20% - 1rem);
+    box-sizing: border-box;
+    text-align: center;
+}

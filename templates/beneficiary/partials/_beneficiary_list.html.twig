@@ -1,0 +1,10 @@
+<div class="beneficiary-list">
+    {% for beneficiary in beneficiaries %}
+        <div class="beneficiary-card">
+            <img class="beneficiary-avatar" src="{{ beneficiary.avatarUrl }}" alt="Avatar de {{ beneficiary.name }}"/>
+            <span class="beneficiary-name">{{ beneficiary.name }}</span>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ asset('style/js/beneficiary-search.js') }}"></script>
