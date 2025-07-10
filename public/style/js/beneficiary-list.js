@@ -52,6 +52,9 @@ persistedList.addEventListener('click', async (e) => {
         const card = e.target.closest('.beneficiary-card');
         const id = card.dataset.id;
 
+        const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce bénéficiaire ?");
+        if (!confirmation) return;
+
         try {
             await deleteBeneficiary(id);
             card.remove();
