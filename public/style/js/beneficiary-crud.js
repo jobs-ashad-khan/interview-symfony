@@ -42,8 +42,8 @@ async function addBeneficiary(data) {
 
 async function editBeneficiary(id, data) {
     const res = await fetch(`/api/beneficiaries/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/ld+json' },
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/merge-patch+json' },
         body: data
     });
 
