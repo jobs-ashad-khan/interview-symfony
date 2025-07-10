@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('style/css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/searchbar.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/beneficiary.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/css/modal.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -39,9 +40,8 @@
             <h3>Personnes non stockées</h3>
 
             <div>
-                <form id="generateBeneficiary">
-                    <button type="submit">Générer un bénéficiaire</button>
-                </form>
+                <button id="generateBeneficiary" class="primary-button">Générer un bénéficiaire</button>
+                <button id="addBeneficiary" class="primary-button">Ajouter un bénéficiaire</button>
             </div>
 
             <div class="beneficiary-search-block">
@@ -59,9 +59,12 @@
                 {% include 'beneficiary/partials/_beneficiary_list.html.twig' with { beneficiaries: persistedBeneficiaries } %}
             </div>
         </div>
+
+        {% include 'beneficiary/partials/_modal.html.twig' %}
     </div>
 </div>
 
+<script src="{{ asset('style/js/beneficiary-modal.js') }}"></script>
 <script src="{{ asset('style/js/beneficiary-search.js') }}"></script>
 <script src="{{ asset('style/js/beneficiary-crud.js') }}"></script>
 <script src="{{ asset('style/js/beneficiary-list.js') }}"></script>

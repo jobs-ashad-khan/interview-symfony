@@ -35,3 +35,8 @@
 .delete-beneficiary-btn:hover {
     background-color: #d9363e;
 }
+
+.edit-btn {
+    color: #3b82f6;
+    cursor: pointer;
+}

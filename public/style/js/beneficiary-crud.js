@@ -27,3 +27,27 @@ async function deleteBeneficiary(id) {
 
     return response;
 }
+
+async function addBeneficiary(data) {
+    const res = await fetch('/api/beneficiaries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/ld+json' },
+        body: data
+    });
+
+    if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
+
+    return await res.json();
+}
+
+async function editBeneficiary(id, data) {
+    const res = await fetch(`/api/beneficiaries/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/ld+json' },
+        body: data
+    });
+
+    if (!res.ok) throw new Error("Erreur lors de la modification");
+
+    return await res.json();
+}

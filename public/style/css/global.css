@@ -43,3 +43,20 @@
 .user-name {
     color: #333;
 }
+
+.primary-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background 0.3s;
+}
+
+.primary-button:hover {
+    background-color: #2563eb;
+}
