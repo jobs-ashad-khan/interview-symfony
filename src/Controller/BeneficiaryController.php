@@ -20,7 +20,7 @@ final class BeneficiaryController extends AbstractController
     {
     }
 
-    #[Route('/beneficiary/generate', name: 'app_beneficiary_generate')]
+    #[Route('/api/beneficiary/generate', name: 'app_beneficiary_generate')]
     public function generate(Request $request): JsonResponse
     {
         if (!$request->isXmlHttpRequest()) {

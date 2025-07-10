@@ -1,5 +1,5 @@
 async function generateBeneficiary() {
-    const response = await fetch('/beneficiary/generate', {
+    const response = await fetch('/api/beneficiary/generate', {
         method: 'POST',
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
