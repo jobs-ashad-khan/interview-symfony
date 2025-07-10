@@ -38,7 +38,7 @@ class BeneficiaryGeneratorServiceTest extends TestCase
         $service = new BeneficiaryGeneratorService($stub);
         $beneficiaries = $service->getRandomBeneficiaries(3);
 
-        $names = array_map(fn($b) => $b->getName(), $beneficiaries);
+        $names = array_map(fn($b) => $b->name, $beneficiaries);
 
         $this->assertEquals(['Alice', 'Bob', 'Charlie'], $names);
     }
