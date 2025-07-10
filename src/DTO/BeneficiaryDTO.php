@@ -6,7 +6,7 @@ use App\Entity\Beneficiary;
 
 class BeneficiaryDTO
 {
-    private int $id;
+    public int $id;
 
     public string $name;
 

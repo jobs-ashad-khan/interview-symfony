@@ -9,4 +9,29 @@
     width: calc(20% - 1rem);
     box-sizing: border-box;
     text-align: center;
+    position: relative;
+}
+
+.delete-beneficiary-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.delete-beneficiary-btn:hover {
+    background-color: #d9363e;
 }

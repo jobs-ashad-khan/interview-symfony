@@ -1,6 +1,11 @@
 <div class="beneficiary-list">
     {% for beneficiary in beneficiaries %}
-        <div class="beneficiary-card">
+        {% set isPersisted = (beneficiary.id is defined and beneficiary.id is not null) %}
+
+        <div class="beneficiary-card" {% if isPersisted %}data-id="{{ beneficiary.id }}"{% endif %}>
+            {% if isPersisted %}
+                <button class="delete-beneficiary-btn" title="Supprimer">×</button>
+            {% endif %}
             <img class="beneficiary-avatar" src="{{ beneficiary.avatarUrl }}" alt="Avatar de {{ beneficiary.name }}"/>
             <span class="beneficiary-name">{{ beneficiary.name }}</span>
         </div>

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\DTO\BeneficiaryDTO;
-use App\Repository\BeneficiaryRepository;
 use App\Service\BeneficiaryGeneratorService;
 use App\Service\BeneficiaryProviderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
